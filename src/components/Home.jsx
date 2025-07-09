@@ -48,37 +48,37 @@ import { useState } from "react";
 //     )
 //   }
 
-// export default function Home() {
-//   const [run, setRun] = useState(0);
-//   const [wicket, setWicket] = useState(0);
-//   const [text, setText] = useState("");
+export default function Home() {
+  const [run, setRun] = useState(0);
+  const [wicket, setWicket] = useState(0);
+  const [text, setText] = useState("");
 
-//   const incRun = () => {
-//     setRun(run + 1);
-//     setText("Well Done");
-//   };
+  const incRun = () => {
+    setRun(run + 1);
+    setText("Well Done");
+  };
 
-//   const incWick = () => {
-//     setWicket(wicket + 1);
-//     setText("Better Luck Next Time");
-//   };
+  const incWick = () => {
+    setWicket(wicket + 1);
+    setText("Better Luck Next Time");
+  };
 
-//   return (
-//     <>
-//       <button onClick={incRun}>Runs</button>
-//       <p>{run}</p>
-//       <button onClick={incWick}>Wickets</button>
-//       <p>{wicket}</p>
-//       <div>
-//         <p>{text}</p>
-//       </div>
-//     </>
-//   );
-// }
+  return (
+    <>
+      <button onClick={incRun}>Runs</button>
+      <p>{run}</p>
+      <button onClick={incWick}>Wickets</button>
+      <p>{wicket}</p>
+      <div>
+        <p>{text}</p>
+      </div>
+    </>
+  );
+}
 
 
 // register form, component folder, last name first name, email, password
 
-export default function Register() {
+// export default function Register() {
     
-}
+// }
