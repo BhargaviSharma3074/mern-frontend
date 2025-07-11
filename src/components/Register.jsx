@@ -1,14 +1,16 @@
 import "./Register.css";
 import { useState,useRef } from "react";
 import axios from "axios";
+// import dotenv from "dotenv";
 
+// dotenv.config();
 export default function Register() {
     const [user, setUser] = useState({});
     const [error, setError] = useState();
     const handleSubmit = async () => {
         try{
-            // const url = "http://localhost:8080/api/users/register";
-            const url = "https://mern-backend-lovat.vercel.app/api/users/register"
+            const url = "http://localhost:8080/api/users/register";
+            // const url = `${import.meta.env.VITE_BACKEND}/api/users/register`;
             const result = await axios.post(url,user);
             setError("Data saved successfully!")}
         catch(err)
@@ -18,6 +20,7 @@ export default function Register() {
         }
 
     }
+      
     return (
         <div className="App-Register-Row">
             <div>
