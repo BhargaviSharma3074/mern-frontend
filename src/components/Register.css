@@ -22,5 +22,6 @@
     padding: 5px;
     margin: 5px;
     align-items: center;
+    box-sizing: border-box;
 
 }
