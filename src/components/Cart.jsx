@@ -33,6 +33,10 @@ export default function Cart() {
   }, [cart]);
 
   const placeOrder = async () => {
+    if (!cart || cart.length === 0 || cart.every(item => item.qty <= 0)) {
+    setError("Cart is empty!");
+    return;
+  }
     try{
       const url = `${API_URL}/api/orders`;
       const newOrder = {
