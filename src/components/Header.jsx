@@ -11,8 +11,8 @@ export default function Header() {
       <Link to="/cart"> MyCart </Link>-
       <Link to="/order"> MyOrder </Link>-
       {/* <Link to="/admin">Admin</Link>- */}
-      {user?.role === "admin" && <Link to="/admin"> Admin </Link>}
-      -{user?.token ? <Link to="/profile"> Profile </Link> : <Link to="/login"> Login</Link> }
+      {user?.role === "admin" && <Link to="/admin"> Admin </Link>}-
+      {user?.token ? <Link to="/profile"> Profile </Link> : <Link to="/login"> Login</Link> }
 
 
     </div>

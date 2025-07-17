@@ -14,7 +14,7 @@ export default function Login() {
   const handleSubmit = async () => {
     try {
       const url = `${API_URL}/api/users/login`;
-        console.log("Login payload:", user);
+        // console.log("Login payload:", user);
       const result = await axios.post(url, user);
       setUser(result.data);
       Navigate("/")

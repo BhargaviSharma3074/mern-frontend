@@ -215,7 +215,7 @@ export default function Users() {
       </div>
     <div>
       <button disabled={page===1} onClick={() => setPage(page-1)}>Previous </button>
-      Page {page} of {totalPages}
+      Page {page} of {totalPages || 0}
       <button disabled={page===totalPages} onClick={() => setPage(page+1)}> Next</button>
     </div>
     </div>
