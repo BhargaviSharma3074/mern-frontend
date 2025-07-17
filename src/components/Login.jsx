@@ -1,16 +1,23 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AppContext } from "../App";
+
+
 export default function Login() {
-  const [user, setUser] = useState({});
+  const {user, setUser} = useContext(AppContext);
   const [error, setError] = useState();
-  const API_URL = import.meta.env.VITE_API_URL;
+  const API_URL = import.meta.env.VITE_BACKEND;
+  const Navigate = useNavigate()
+
   const handleSubmit = async () => {
     try {
       const url = `${API_URL}/api/users/login`;
+        console.log("Login payload:", user);
       const result = await axios.post(url, user);
-      setError("Welcome");
+      setUser(result.data);
+      Navigate("/")
     } catch (err) {
       console.log(err);
       setError("Something went wrong");
@@ -37,7 +44,7 @@ export default function Login() {
       <p>
         <button onClick={handleSubmit}>Submit</button>
       </p>
-      <br />
+      <hr />
       <Link to="/register">Create Account</Link>
     </div>
   );

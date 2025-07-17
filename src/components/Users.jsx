@@ -6,13 +6,13 @@ export default function Users() {
   const [users, setUsers] = useState([]);
   const [error, setError] = useState();
   const frmRef = useRef();
-  const [form, setForm] = {
-    firstName:"", 
-    lastName:"", 
+  const [form, setForm] = useState({
+    firstname:"", 
+    lastname:"", 
     email:"", 
     password:"", 
-    role:""
-  };
+    role:"",
+  });
   const [page, setPage] = useState(1);
   const [searchVal, setSearchVal] = useState("")
   const [totalPages, setTotalPages] = useState(1);
@@ -23,7 +23,7 @@ export default function Users() {
     try{
       setError("Loading...");
       const url = `${API_URL}/api/users/?page=${page}&limit=${limit}&search=${searchVal}`;
-    const result = await axios.get(url);
+      const result = await axios.get(url);
     setUsers(result.data.users);
     setTotalPages(result.data.total);
     setError()
@@ -77,8 +77,8 @@ export default function Users() {
     setEditId(user._id);
     setForm({
         ...form, 
-        firstName: user.firstName,
-        lastName: user.lastName,
+        firstname: user.firstname,
+        lastname: user.lastname,
         email: user.email,
         password: user.password,
         role: user.role,
@@ -109,8 +109,8 @@ export default function Users() {
   const resetForm = () => {
     setForm({
       ...form,
-      firstName: "",
-      lastName: "",
+      firstname: "",
+      lastname: "",
       email: "",
       password: "",
       role: "",
@@ -123,16 +123,16 @@ export default function Users() {
       <div>
         <form ref={frmRef}>
           <input 
-            name="firstName"
-            value={form.firstName}
+            name="firstname"
+            value={form.firstname}
             type="text"
             placeholder="First Name"
             onChange={handleChange}
             required
           />
           <input 
-            name="lastName"
-            value={form.lastName}
+            name="lastname"
+            value={form.lastname}
             type="text"
             placeholder="Last Name"
             onChange={handleChange}
@@ -195,11 +195,11 @@ export default function Users() {
               <th>Role</th>
             </tr>
           </thead>
-          {users.map((value) => (
+          {(users || []).map((value) => (
             <tbody key={value._id}>
               <tr>
-                <td>{value.firstName}</td>
-                <td>{value.lastName}</td>
+                <td>{value.firstname}</td>
+                <td>{value.lastname}</td>
                 <td>{value.email}</td>
                 <td>{value.role}</td>
                 <td>

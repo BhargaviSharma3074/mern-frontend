@@ -119,7 +119,7 @@ export default function Register() {
         <p>
           <input
             type="text"
-            onChange={(e) => setUser({ ...user, firstName: e.target.value })}
+            onChange={(e) => setUser({ ...user, firstname: e.target.value })}
             placeholder="Enter First Name"
           />
         </p>
@@ -127,7 +127,7 @@ export default function Register() {
           <input
             type="text"
             placeholder="Enter Last Name"
-            onChange={(e) => setUser({ ...user, lastName: e.target.value })}
+            onChange={(e) => setUser({ ...user, lastname: e.target.value })}
           />
         </p>
         <p>
