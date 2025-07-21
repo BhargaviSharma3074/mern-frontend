@@ -7,7 +7,7 @@ export default function Footer
   return (
     <div className="footer-container">
       <footer className="footer-content">
-        This is footer
+        <p>Copyright &copy; 2025 Elm&Oak</p>
       </footer>
     </div>
   )

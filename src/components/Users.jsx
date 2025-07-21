@@ -440,9 +440,9 @@ export default function Users() {
               <th>Actions</th>
             </tr>
           </thead>
-          {(users || []).map((value) => (
-            <tbody key={value._id}>
-              <tr>
+          <tbody>
+            {(users || []).map((value) => (
+              <tr key={value._id}>
                 <td>{value.firstname}</td>
                 <td>{value.lastname}</td>
                 <td>{value.email}</td>
@@ -452,8 +452,8 @@ export default function Users() {
                   <button className="users-btn users-delete-btn" onClick={() => handleDelete(value._id)}>Delete</button>
                 </td>
               </tr>
-            </tbody>
-          ))}
+            ))}
+          </tbody>
         </table>
       </div>
       <div className="users-pagination">

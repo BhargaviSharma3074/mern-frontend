@@ -58,7 +58,7 @@ export default function Profile() {
     <div className="profile-container">
       <h3 className="profile-title">My Profile</h3>
       <div className="profile-error">{error}</div>
-      <button className="profile-btn" onClick={logout}>Logout</button>
+
       <form className="profile-form">
         <input
           className="profile-input"
@@ -89,6 +89,7 @@ export default function Profile() {
           onChange={handleChange}
         />
         <button className="profile-btn" type="button" onClick={handleSubmit}>Update Profile</button>
+        <button className="profile-btn" onClick={logout}>Logout</button>
       </form>
     </div>
   );

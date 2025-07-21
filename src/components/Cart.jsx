@@ -58,32 +58,36 @@ export default function Cart() {
   };
 
   return (
-    <div>
-      <h2>My Cart</h2>
-      {error}
-      {cart &&
-        cart.map(
-          (value) =>
-            value.qty > 0 && (
-              <li key={value._id}>
-                {value.pname} | {value.price} :
-                <button onClick={() => decrement(value._id, value.qty)}>
-                  -
-                </button>
-                {value.qty}
-                <button onClick={() => increment(value._id, value.qty)}>
-                  +
-                </button>
-                | {value.price * value.qty}
-              </li>
-            )
-        )}
-      <h5>Order Value:{orderValue}</h5>
+    <div className="cart-container">
+      <h2 className="cart-title">My Cart</h2>
+      <div className="cart-error">{error}</div>
+      <ul className="cart-list">
+        {cart &&
+          cart.map(
+            (value) =>
+              value.qty > 0 && (
+                <li key={value._id}>
+                  <img className="cart-img" src={value.imgUrl} alt={value.pname} width={40} height={40} style={{ objectFit: 'contain', marginRight: '8px', borderRadius: '4px', border: '1px solid #eee' }} />
+                  {value.pname} |
+                  <span>&#8377;{value.price}</span> :
+                  <button className="cart-btn" onClick={() => decrement(value._id, value.qty)}>
+                    -
+                  </button>
+                  {value.qty}
+                  <button className="cart-btn" onClick={() => increment(value._id, value.qty)}>
+                    +
+                  </button>
+                  | <span>&#8377;{value.price * value.qty}</span>
+                </li>
+              )
+          )}
+      </ul>
+      <h5 className="cart-order-value">Order Value: <span>&#8377;{orderValue}</span></h5>
       <p>
         {user?.token ? (
-          <button onClick={placeOrder}>Place Order</button>
+          <button className="cart-btn cart-place-btn" onClick={placeOrder}>Place Order</button>
         ) : (
-          <button onClick={() => Navigate("/login")}>Login to Order</button>
+          <button className="cart-btn cart-login-btn" onClick={() => Navigate("/login")}>Login to Order</button>
         )}
       </p>
     </div>

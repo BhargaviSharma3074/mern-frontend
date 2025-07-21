@@ -2,24 +2,44 @@
     display: flex;
     justify-content: center;
     padding: 16px;
-    margin: 16px auto;
+    margin: 16px auto 16px auto;
     margin-bottom: 16px;
     background-color: #fff;
     border-radius: 14px;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.10);
-    max-width: 500px;
+    max-width: 700px;
     font-family: 'Segoe UI', Arial, sans-serif;
 }
 
+.App-Register-Row>div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+}
+
+.App-Register-Row h2 {
+    text-align: center;
+    width: 100%;
+}
+
+.App-Register-Row p {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+
 .App-Register-Row button {
+    width: 95%;
+    max-width: 500px;
+    margin: 12px 0 0 0;
     padding: 10px 22px;
-    margin: 8px;
     border-radius: 6px;
     border: none;
     background: #111;
     color: #fff;
     font-weight: 600;
-    width: 100%;
     align-items: center;
     transition: background 0.2s, box-shadow 0.2s;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -30,8 +50,10 @@
 }
 
 .App-Register-Row input {
+    width: 95%;
+    max-width: 500px;
+    margin: 8px 0;
     padding: 10px 14px;
-    margin: 8px;
     align-items: center;
     box-sizing: border-box;
     border: 1.5px solid #bbb;
@@ -45,4 +67,11 @@
 .App-Register-Row input:focus {
     border: 1.5px solid #111;
     outline: none;
+}
+
+.App-Register-Row a {
+    display: block;
+    text-align: center;
+    margin-top: 16px;
+    width: 100%;
 }
