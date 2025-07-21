@@ -44,7 +44,7 @@
 //     <div>
 //       <h2>Order Management</h2>
 //       {error}
-      
+
 //       <div>
 //         <select onChange={(e) => setStatus(e.target.value)}>
 //           <option value="">All</option>
@@ -92,9 +92,11 @@
 
 // ==============================================================
 
+import "./Orders.css";
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { AppContext } from "../App";
+
 
 export default function Orders() {
   const [orders, setOrders] = useState([]);
@@ -142,65 +144,64 @@ export default function Orders() {
   };
 
   return (
-    <div>
-      <h2>Order Management</h2>
-      {error}
-
+    <div className="orders-container">
+      <h2 className="orders-title">Order Management</h2>
+      <div className="orders-error">{error}</div>
       <div>
-        <select onChange={(e) => setStatus(e.target.value)} value={status}>
+        <select className="orders-select" onChange={(e) => setStatus(e.target.value)} value={status}>
           <option value="">All</option>
           <option value="Pending">Pending</option>
           <option value="completed">Completed</option>
           <option value="cancelled">Cancelled</option>
         </select>
       </div>
-
-      <table border="1">
-        <thead>
-          <tr>
-            <th>Order ID</th>
-            <th>Order Value</th>
-            <th>Status</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {orders.length === 0 ? (
+      <div className="orders-table-section">
+        <table className="orders-table" border="1">
+          <thead>
             <tr>
-              <td>No orders found.</td>
+              <th>Order ID</th>
+              <th>Order Value</th>
+              <th>Status</th>
+              <th>Actions</th>
             </tr>
-          ) : (
-            orders.map((order) => (
-              <tr key={order._id}>
-                <td>{order._id}</td>
-                <td>{order.orderValue}</td>
-                <td>{order.status}</td>
-                <td>
-                  {order.status === "Pending" ? (
-                    <>
-                      <button onClick={() => updateOrder("cancelled", order._id)}>
-                        Cancel
-                      </button>{" "}
-                      <button onClick={() => updateOrder("completed", order._id)}>
-                        Complete
-                      </button>
-                    </>
-                  ) : (
-                    "-"
-                  )}
-                </td>
+          </thead>
+          <tbody>
+            {orders.length === 0 ? (
+              <tr>
+                <td>No orders found.</td>
               </tr>
-            ))
-          )}
-        </tbody>
-      </table>
-
-      <div style={{ marginTop: "10px" }}>
-        <button disabled={page === 1} onClick={() => setPage(page - 1)}>
+            ) : (
+              orders.map((order) => (
+                <tr key={order._id}>
+                  <td>{order._id}</td>
+                  <td>{order.orderValue}</td>
+                  <td>{order.status}</td>
+                  <td>
+                    {order.status === "Pending" ? (
+                      <>
+                        <button className="orders-btn orders-cancel-btn" onClick={() => updateOrder("cancelled", order._id)}>
+                          Cancel
+                        </button>{" "}
+                        <button className="orders-btn orders-complete-btn" onClick={() => updateOrder("completed", order._id)}>
+                          Complete
+                        </button>
+                      </>
+                    ) : (
+                      "-"
+                    )}
+                  </td>
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
+      </div>
+      <div className="orders-pagination">
+        <button className="orders-btn" disabled={page === 1} onClick={() => setPage(page - 1)}>
           Previous
         </button>{" "}
-        Page {page} of {totalPages}{" "}
-        <button disabled={page === totalPages} onClick={() => setPage(page + 1)}>
+        <span className="orders-page-info">Page {page} of {totalPages}</span>{" "}
+        <button className="orders-btn" disabled={page === totalPages} onClick={() => setPage(page + 1)}>
           Next
         </button>
       </div>

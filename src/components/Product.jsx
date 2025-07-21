@@ -48,10 +48,11 @@
 
 // ========================================================================================================================
 
-
+import "./Product.css";
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { AppContext } from "../App";
+
 
 export default function Product() {
   const [products, setProducts] = useState([]);
@@ -88,18 +89,20 @@ export default function Product() {
   };
 
   return (
-    <div>
-      <h3>Available Products</h3>
-      {error && <p>{error}</p>}
-      {products.map((product) => (
-        <div key={product._id}>
-          <img src={product.imgUrl} width={100} alt={product.pname} />
-          <h4>{product.pname}</h4>
-          <p>{product.description}</p>
-          <p>₹{product.price}</p>
-          <button onClick={() => addToCart(product)}>Add to Cart</button>
-        </div>
-      ))}
+    <div className="product-container">
+      <h3 className="product-title">Available Products</h3>
+      {error && <p className="product-error">{error}</p>}
+      <div className="product-list">
+        {products.map((product) => (
+          <div className="product-card" key={product._id}>
+            <img className="product-img" src={product.imgUrl} width={100} alt={product.pname} />
+            <h4>{product.pname}</h4>
+            <p>{product.description}</p>
+            <p>&#8377;{product.price}</p>
+            <button className="product-btn" onClick={() => addToCart(product)}>Add to Cart</button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

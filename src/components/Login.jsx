@@ -1,3 +1,4 @@
+import "./Login.css";
 import React from "react";
 import { useState, useContext } from "react";
 import axios from "axios";
@@ -5,8 +6,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "../App";
 
 
+
 export default function Login() {
-  const {user, setUser} = useContext(AppContext);
+  const { user, setUser } = useContext(AppContext);
   const [error, setError] = useState();
   const API_URL = import.meta.env.VITE_BACKEND;
   const Navigate = useNavigate()
@@ -14,7 +16,7 @@ export default function Login() {
   const handleSubmit = async () => {
     try {
       const url = `${API_URL}/api/users/login`;
-        // console.log("Login payload:", user);
+      // console.log("Login payload:", user);
       const result = await axios.post(url, user);
       setUser(result.data);
       Navigate("/")
@@ -24,28 +26,25 @@ export default function Login() {
     }
   };
   return (
-    <div>
-      <h2>Login</h2>
-      {error}
-      <p>
+    <div className="login-container">
+      <h2 className="login-title">Login</h2>
+      <div className="login-error">{error}</div>
+      <form className="login-form">
         <input
+          className="login-input"
           type="text"
           placeholder="Email Address"
           onChange={(e) => setUser({ ...user, email: e.target.value })}
         />
-      </p>
-      <p>
         <input
+          className="login-input"
           type="password"
           placeholder="Password"
           onChange={(e) => setUser({ ...user, password: e.target.value })}
         />
-      </p>
-      <p>
-        <button onClick={handleSubmit}>Submit</button>
-      </p>
-      <hr />
-      <Link to="/register">Create Account</Link>
+        <button className="login-btn" type="button" onClick={handleSubmit}>Submit</button>
+      </form>
+      <Link className="login-link" to="/register">Create Account</Link>
     </div>
   );
 }

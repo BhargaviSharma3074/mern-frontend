@@ -1,8 +1,10 @@
+import "./Cart.css";
 import React, { useState } from "react";
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../App";
 import axios from "axios";
+
 
 export default function Cart() {
   const { user, cart, setCart } = useContext(AppContext);
@@ -34,10 +36,10 @@ export default function Cart() {
 
   const placeOrder = async () => {
     if (!cart || cart.length === 0 || cart.every(item => item.qty <= 0)) {
-    setError("Cart is empty!");
-    return;
-  }
-    try{
+      setError("Cart is empty!");
+      return;
+    }
+    try {
       const url = `${API_URL}/api/orders`;
       const newOrder = {
         userId: user._id,
@@ -49,7 +51,7 @@ export default function Cart() {
       setCart([]);
       Navigate("/order");
     }
-    catch(err){
+    catch (err) {
       console.log(err);
       setError("Something went wrong!");
     }
@@ -64,7 +66,7 @@ export default function Cart() {
           (value) =>
             value.qty > 0 && (
               <li key={value._id}>
-                {value.pname} | {value.price} : 
+                {value.pname} | {value.price} :
                 <button onClick={() => decrement(value._id, value.qty)}>
                   -
                 </button>

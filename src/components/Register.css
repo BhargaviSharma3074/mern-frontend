@@ -1,27 +1,48 @@
-.App-Register-Row{
+.App-Register-Row {
     display: flex;
     justify-content: center;
-    padding: 10px;
-    margin: 10px;
-    margin-bottom: 10px;
-    background-color: beige;
-    border-radius: 10px;
-   
+    padding: 16px;
+    margin: 16px auto;
+    margin-bottom: 16px;
+    background-color: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.10);
+    max-width: 500px;
+    font-family: 'Segoe UI', Arial, sans-serif;
 }
 
-.App-Register-Row button{
-    padding: 5px;
-    margin: 5px;
-    border-radius: 5px;
-    border: solid black;
+.App-Register-Row button {
+    padding: 10px 22px;
+    margin: 8px;
+    border-radius: 6px;
+    border: none;
+    background: #111;
+    color: #fff;
+    font-weight: 600;
     width: 100%;
     align-items: center;
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-.App-Register-Row input{
-    padding: 5px;
-    margin: 5px;
+.App-Register-Row button:hover {
+    background: #222;
+}
+
+.App-Register-Row input {
+    padding: 10px 14px;
+    margin: 8px;
     align-items: center;
     box-sizing: border-box;
+    border: 1.5px solid #bbb;
+    border-radius: 6px;
+    font-size: 1rem;
+    background: #fff;
+    color: #111;
+    transition: border 0.2s;
+}
 
+.App-Register-Row input:focus {
+    border: 1.5px solid #111;
+    outline: none;
 }

@@ -105,7 +105,7 @@
 //     setEditId();
 //     resetForm();
 //   }
-  
+
 //   const resetForm = () => {
 //     setForm({
 //       ...form,
@@ -220,7 +220,7 @@
 //     </div>
 //     </div>
 //     );
-  
+
 // }
 
 
@@ -232,10 +232,11 @@
 
 // ================================================================================================================
 
-
+import "./Users.css";
 import axios from 'axios';
 import React, { useRef, useEffect, useState, useContext } from 'react';
 import { AppContext } from "../App";
+
 
 export default function Users() {
   const { user } = useContext(AppContext); // Get token from context
@@ -358,12 +359,13 @@ export default function Users() {
   };
 
   return (
-    <div>
-      <h2>User Management</h2>
-      {error}
-      <div>
-        <form ref={frmRef}>
+    <div className="users-container">
+      <h2 className="users-title">User Management</h2>
+      <div className="users-error">{error}</div>
+      <div className="users-form-section">
+        <form ref={frmRef} className="users-form">
           <input
+            className="users-input"
             name="firstname"
             value={form.firstname}
             type="text"
@@ -372,6 +374,7 @@ export default function Users() {
             required
           />
           <input
+            className="users-input"
             name="lastname"
             value={form.lastname}
             type="text"
@@ -380,6 +383,7 @@ export default function Users() {
             required
           />
           <input
+            className="users-input"
             name="email"
             value={form.email}
             type="text"
@@ -388,6 +392,7 @@ export default function Users() {
             required
           />
           <input
+            className="users-input"
             name="password"
             value={form.password}
             type="password"
@@ -396,6 +401,7 @@ export default function Users() {
             required
           />
           <select
+            className="users-input"
             name="role"
             value={form.role}
             onChange={handleChange}
@@ -406,24 +412,25 @@ export default function Users() {
           </select>
           {editId ? (
             <>
-              <button onClick={handleUpdate}>Update</button>
-              <button onClick={handleCancel}>Cancel</button>
+              <button className="users-btn users-update-btn" onClick={handleUpdate}>Update</button>
+              <button className="users-btn users-cancel-btn" onClick={handleCancel}>Cancel</button>
             </>
           ) : (
-            <button onClick={handleAdd}>Add</button>
+            <button className="users-btn users-add-btn" onClick={handleAdd}>Add</button>
           )}
         </form>
       </div>
-      <div>
+      <div className="users-search-section">
         <input
+          className="users-search-input"
           type="text"
           value={searchVal}
           onChange={(e) => setSearchVal(e.target.value)}
         />
-        <button onClick={() => fetchUsers()}>Search</button>
+        <button className="users-btn users-search-btn" onClick={() => fetchUsers()}>Search</button>
       </div>
-      <div>
-        <table border="1">
+      <div className="users-table-section">
+        <table className="users-table" border="1">
           <thead>
             <tr>
               <th>First Name</th>
@@ -441,20 +448,20 @@ export default function Users() {
                 <td>{value.email}</td>
                 <td>{value.role}</td>
                 <td>
-                  <button onClick={() => handleEdit(value)}>Edit</button>
-                  <button onClick={() => handleDelete(value._id)}>Delete</button>
+                  <button className="users-btn users-edit-btn" onClick={() => handleEdit(value)}>Edit</button>
+                  <button className="users-btn users-delete-btn" onClick={() => handleDelete(value._id)}>Delete</button>
                 </td>
               </tr>
             </tbody>
           ))}
         </table>
       </div>
-      <div>
-        <button disabled={page === 1} onClick={() => setPage(page - 1)}>
+      <div className="users-pagination">
+        <button className="users-btn users-prev-btn" disabled={page === 1} onClick={() => setPage(page - 1)}>
           Previous
         </button>
-        Page {page} of {totalPages || 0}
-        <button disabled={page === totalPages} onClick={() => setPage(page + 1)}>
+        <span className="users-page-info">Page {page} of {totalPages || 0}</span>
+        <button className="users-btn users-next-btn" disabled={page === totalPages} onClick={() => setPage(page + 1)}>
           Next
         </button>
       </div>

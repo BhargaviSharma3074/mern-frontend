@@ -1,0 +1,175 @@
+.users-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 32px;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.10);
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.users-title {
+    text-align: center;
+    margin-bottom: 28px;
+    color: #111;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.users-error {
+    color: #C62828;
+    text-align: center;
+    margin-bottom: 16px;
+    min-height: 20px;
+}
+
+.users-form-section {
+    margin-bottom: 28px;
+    display: flex;
+    justify-content: center;
+}
+
+.users-form {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.users-input {
+    padding: 10px 14px;
+    border: 1.5px solid #bbb;
+    border-radius: 6px;
+    font-size: 1rem;
+    min-width: 160px;
+    background: #fff;
+    color: #111;
+    transition: border 0.2s;
+}
+
+.users-input:focus {
+    border: 1.5px solid #111;
+    outline: none;
+}
+
+.users-btn {
+    padding: 10px 22px;
+    border: none;
+    border-radius: 6px;
+    background: #111;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: 6px;
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.users-btn:disabled {
+    background: #bbb;
+    color: #fff;
+    cursor: not-allowed;
+}
+
+.users-add-btn {
+    background: #222;
+}
+
+.users-update-btn {
+    background: #333;
+}
+
+.users-cancel-btn {
+    background: #bbb;
+    color: #111;
+}
+
+.users-edit-btn {
+    background: #333;
+}
+
+.users-delete-btn {
+    background: #C62828;
+}
+
+.users-search-btn {
+    background: #111;
+}
+
+.users-prev-btn {
+    background: #333;
+}
+
+.users-next-btn {
+    background: #222;
+}
+
+.users-btn:not(:disabled):hover {
+    background: #000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.13);
+}
+
+.users-search-section {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 22px;
+    gap: 10px;
+}
+
+.users-search-input {
+    padding: 9px 14px;
+    border: 1.5px solid #bbb;
+    border-radius: 6px;
+    font-size: 1rem;
+    background: #fff;
+    color: #111;
+}
+
+.users-table-section {
+    overflow-x: auto;
+    margin-bottom: 22px;
+}
+
+.users-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.users-table th,
+.users-table td {
+    padding: 14px 16px;
+    border: 1px solid #eee;
+    text-align: left;
+}
+
+.users-table th {
+    background: #111;
+    color: #fff;
+    font-weight: 600;
+}
+
+.users-table tbody tr:nth-child(even) {
+    background: #f5f5f5;
+}
+
+.users-table tbody tr:hover {
+    background: #eee;
+}
+
+.users-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 22px;
+}
+
+.users-page-info {
+    font-weight: 600;
+    color: #111;
+    font-size: 1.1rem;
+}

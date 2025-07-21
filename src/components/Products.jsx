@@ -218,11 +218,12 @@
 
 // =================================================================================================
 
-
+import "./Products.css";
 import React from "react";
 import { useEffect, useState, useRef, useContext } from "react";
 import axios from "axios";
 import { AppContext } from "../App";
+
 
 export default function Products() {
   const [products, setProducts] = useState([]);
@@ -358,12 +359,13 @@ export default function Products() {
   };
 
   return (
-    <div>
-      <h2>Product Management</h2>
+    <div className="products-container">
+      <h2 className="products-title">Product Management</h2>
       {error}
-      <div>
-        <form ref={frmRef}>
+      <div className="products-form-section">
+        <form ref={frmRef} className="products-form">
           <input
+            className="products-input"
             name="pname"
             value={form.pname}
             type="text"
@@ -372,6 +374,7 @@ export default function Products() {
             required
           />
           <input
+            className="products-input"
             name="description"
             value={form.description}
             type="text"
@@ -380,6 +383,7 @@ export default function Products() {
             required
           />
           <input
+            className="products-input"
             name="price"
             value={form.price}
             type="text"
@@ -388,6 +392,7 @@ export default function Products() {
             required
           />
           <input
+            className="products-input"
             name="imgUrl"
             value={form.imgUrl}
             type="text"
@@ -395,27 +400,27 @@ export default function Products() {
             onChange={handleChange}
             required
           />
-
           {editId ? (
             <>
-              <button onClick={handleUpdate}>Update</button>
-              <button onClick={handleCancel}>Cancel</button>
+              <button className="products-btn products-update-btn" onClick={handleUpdate}>Update</button>
+              <button className="products-btn products-cancel-btn" onClick={handleCancel}>Cancel</button>
             </>
           ) : (
-            <button onClick={handleAdd}>Add</button>
+            <button className="products-btn products-add-btn" onClick={handleAdd}>Add</button>
           )}
         </form>
       </div>
-      <div>
+      <div className="products-search-section">
         <input
+          className="products-search-input"
           type="text"
           placeholder="Search products"
           onChange={(e) => setSearchVal(e.target.value)}
         />
-        <button onClick={fetchProducts}>Search</button>
+        <button className="products-btn products-search-btn" onClick={fetchProducts}>Search</button>
       </div>
-      <div>
-        <table border="1">
+      <div className="products-table-section">
+        <table className="products-table" border="1">
           <thead>
             <tr>
               <th>Product Name</th>
@@ -433,20 +438,20 @@ export default function Products() {
                 <td>{value.price}</td>
                 <td>{value.imgUrl}</td>
                 <td>
-                  <button onClick={() => handleEdit(value)}>Edit</button>
-                  <button onClick={() => handleDelete(value._id)}>Delete</button>
+                  <button className="products-btn products-edit-btn" onClick={() => handleEdit(value)}>Edit</button>
+                  <button className="products-btn products-delete-btn" onClick={() => handleDelete(value._id)}>Delete</button>
                 </td>
               </tr>
             </tbody>
           ))}
         </table>
       </div>
-      <div>
-        <button disabled={page === 1} onClick={() => setPage(page - 1)}>
+      <div className="products-pagination">
+        <button className="products-btn products-prev-btn" disabled={page === 1} onClick={() => setPage(page - 1)}>
           Previous
         </button>
-        Page {page} of {totalPages}
-        <button disabled={page === totalPages} onClick={() => setPage(page + 1)}>
+        <span className="products-page-info">Page {page} of {totalPages}</span>
+        <button className="products-btn products-next-btn" disabled={page === totalPages} onClick={() => setPage(page + 1)}>
           Next
         </button>
       </div>
